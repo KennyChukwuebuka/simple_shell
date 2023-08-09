@@ -1,0 +1,12 @@
+# This file lists the canonical name and email of contributors, and is used to
+# generate AUTHORS (in hack/generate-authors.sh).
+# To find new duplicates, regenerate AUTHORS and scan for name duplicates, or
+# run the following to find email duplicates:
+# git log --format='<%ae> %an' | sort -u | awk -F'>' '{print $1}' | uniq -c | grep -v '^ *1'
+
+# run the following to find username duplicate:
+#git log --format='<%an> %ae' | sort -u | awk -F'>' '{print $1}' | uniq -c | grep -v '^ *1'
+
+
+Imane Benammou <imanebenamou@gmail.com>
+Kennedy Chukwuebuka <kenkinado@gmail.com>>
