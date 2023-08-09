@@ -5,7 +5,7 @@
 # git log --format='<%ae> %an' | sort -u | awk -F'>' '{print $1}' | uniq -c | grep -v '^ *1'
 
 # run the following to find username duplicate:
-#git log --format='<%an> %ae' | sort -u | awk -F'>' '{print $1}' | uniq -c | grep -v '^ *1'
+# git log --format='<%an> %ae' | sort -u | awk -F'>' '{print $1}' | uniq -c | grep -v '^ *1'
 
 
 Imane Benammou <imanebenamou@gmail.com>
