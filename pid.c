@@ -12,9 +12,9 @@ int main(void)
 
 	my_ppid = getppid();
 	my_pid = getpid();
-	
+
 	printf("This is my_pid %u\n", my_pid);
 	printf("This is my_ppid %u\n", my_ppid);
-	
+
 	return (0);
 }
