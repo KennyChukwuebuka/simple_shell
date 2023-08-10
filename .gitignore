@@ -13,3 +13,6 @@
 # artifacts
 *.exe
 *.gz
+
+# Allow Betty checks script
+!betty_style_check.sh
