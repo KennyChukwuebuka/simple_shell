@@ -1,0 +1,14 @@
+#include "main.h"
+
+int main(int ac, char **av) {
+        (void)ac;
+    char **arg = av; // Pointer to the start of the av array
+
+    while (*arg != NULL) {
+        printf("%s\n", *arg); // Print the argument
+        arg++; // Move to the next argument
+    }
+
+    return 0;
+}
+
