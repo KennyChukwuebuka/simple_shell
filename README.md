@@ -28,6 +28,9 @@ To compile and run our shell, follow these steps:
 1. Clone this repository to your local machine.
 2. Open a terminal window and navigate to the repository directory.
 3. Compile the shell using the following command:
+ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+4. Run the shell using the command:
+ ./hsh
 
 ## Usage
 After running the shell, you will see a custom prompt where you can enter commands. Our shell supports various functionalities, including executing external programs, built-in commands, managing environment variables, and more.
