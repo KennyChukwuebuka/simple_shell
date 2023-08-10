@@ -1,0 +1,15 @@
+# This is the ignore file created to ignore special files not needed.
+# [global .gitignore](https://help.github.com/articles/ignoring-files).
+
+*~
+.*.swp
+*.bak
+
+# local repository customization
+.envrc
+.bashrc
+.editorconfig
+
+# artifacts
+*.exe
+*.gz
