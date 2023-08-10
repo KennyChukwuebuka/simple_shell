@@ -43,6 +43,7 @@ int main(int ac, char **av)
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t n_chars;
+	int ret;
 	char *prmpt = "$ ";
 
 	while (1)
@@ -52,12 +53,22 @@ int main(int ac, char **av)
 
 		if (n_chars == -1)
 		{
-		free(line);
-		exit(0);
+			if (feof(filestream))
+			{
+				break;
+			}
+			else
+			{
+				perror("getline");
+				break;
+			}
 		}
 		free(line);
 		line = NULL;
 		len = 0;
 	}
+	free(line);
+	fclose(filestream);
+
 	return (0);
 }
