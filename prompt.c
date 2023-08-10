@@ -28,22 +28,23 @@ int _printstr(char *s)
 	}
 	return (char_count);
 }
+
 /**
  * main - Entry point
  * @ac: argument count
  * @av: argument vector
  *
- * Return: Always  0
+ * Return: prompt
  */
 
 int main(int ac, char **av)
 {
 	(void)ac;
+	(void)av;
 	FILE *filestream = stdin;
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t n_chars;
-	int ret;
 	char *prmpt = "$ ";
 
 	while (1)
