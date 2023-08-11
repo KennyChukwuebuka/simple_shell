@@ -13,6 +13,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <stdbool.h>
 
 /* Proptotypes */
 int _printstr(char *s);
