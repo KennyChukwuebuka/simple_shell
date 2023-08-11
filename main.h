@@ -18,5 +18,6 @@
 /* Proptotypes */
 int _printstr(char *s);
 int _putchar(char c);
+char *_strtok(char *str, const char *delim);
 
 #endif /*main.h*/
