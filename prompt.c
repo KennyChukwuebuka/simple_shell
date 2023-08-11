@@ -47,29 +47,30 @@ int main(int ac, char **av)
 	ssize_t n_chars;
 	char *prmpt = "$ ";
 
-	while (1)
-	{
-		_printstr(prmpt);
-		n_chars = getline(&line, &len, filestream);
+	_printstr(prmpt);
+	fflush(stdout);
+	n_chars = getline(&line, &len, filestream);
 
-		if (n_chars == -1)
+	if (n_chars == -1)
+	{
+		if (feof(filestream))
 		{
-			if (feof(filestream))
-			{
-				break;
-			}
-			else
-			{
-				perror("getline");
-				break;
-			}
+			exit(0);
 		}
-		free(line);
-		line = NULL;
-		len = 0;
+		else
+		{
+			perror("getline");
+			exit(0);
+		}
 	}
+	printf("%s", line);
+
 	free(line);
-	fclose(filestream);
+	line = NULL;
+	len = 0;
+
+	free(line);
+	/*fclose(filestream);*/
 
 	return (0);
 }
