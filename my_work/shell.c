@@ -9,9 +9,12 @@
  */
 void process_line(char *process, char *envp[])
 {
-	pid_t child_pid = fork();
+	pid_t child_pid;
 	int pro_status;
-	char *argv[] = {process, NULL};
+	char *argv[2];
+	argv[0] = process;
+	argv[1] = NULL;
+	child_pid = fork();
 
 	if (child_pid == 0)
 	{
@@ -38,6 +41,8 @@ void process_line(char *process, char *envp[])
 int main(int argc, char *argv[], char *envp[])
 {
 	char input[MAX_USER_INPUT_COMMAND];
+	(void)argc;
+	(void)argv;
 
 	while (1)
 	{

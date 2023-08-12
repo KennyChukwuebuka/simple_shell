@@ -39,13 +39,13 @@ int _printstr(char *s)
 
 int main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
 	FILE *filestream = stdin;
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t n_chars;
 	char *prmpt = "$ ";
+	(void)ac;
+	(void)av;
 
 	_printstr(prmpt);
 	fflush(stdout);

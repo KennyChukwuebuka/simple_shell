@@ -10,6 +10,7 @@
 char *_strtok(char *str, const char *delim)
 {
 	static char *lastTok;
+	char *tokenStart = str;
 
 	if (str)
 	{
@@ -31,7 +32,7 @@ char *_strtok(char *str, const char *delim)
 		return (NULL);
 	}
 
-	char *tokenStart = str;
+	/*char *tokenStart = str;*/
 
 	str += strcspn(str, delim);
 

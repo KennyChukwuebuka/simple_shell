@@ -9,10 +9,9 @@
  */
 
 int main(int ac, char **av)
-{
+{	int i;
 	(void)ac;
-	int i = 1; /*Start from av[1] to skip the program name in av[0]*/
-
+	i = 1;
 	while (av[i] != NULL)
 	{
 		printf("%s\n", av[i]);
