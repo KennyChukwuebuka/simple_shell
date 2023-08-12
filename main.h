@@ -15,6 +15,9 @@
 #include <sys/types.h>
 #include <stdbool.h>
 
+/* User input */
+#define MAX_USER_INPUT_COMMAND 100
+
 /* Proptotypes */
 int _printstr(char *s);
 int _putchar(char c);
