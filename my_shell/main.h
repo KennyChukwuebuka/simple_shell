@@ -20,6 +20,13 @@
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 
+/*=========Command===========*/
+
+#define COMMAND_NORM	0
+#define COMMAND_OR	1
+#define COMMAND_AND	2
+#define COMMAND_CHAIN	3
+
 /*====Converter func=====*/
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
@@ -53,6 +60,8 @@ typedef struct passinfo
 	list_t *history;
 	list_t *alias;
 	char *path;
+	char **cmd_buf;
+	int cmd_buf_type;
 } info_t;
 
 
@@ -66,7 +75,7 @@ typedef struct megain
 /* User input */
 #define MAX_USER_INPUT_COMMAND 100
 
-/* Proptotypes */
+/*======== Proptotypes============== */
 int _printstr(char *s);
 int _putchar(char c);
 char *_strtok(char *str, const char *delim);
@@ -118,6 +127,8 @@ int del_node_i(list_t **head, unsigned int ind);
 /*=====func list1========*/
 list_t *_myaddnode(list_t **head, const char *str, int num);
 void list_free(list_t **ptr_tohead);
+void checkcont_chain(info_t *info, char *buff, size_t *s, size_t j, size_t len);
+int _ischaindelim(info_t *info, char *buff, size_t *s);
 /*======func list2=======*/
 ssize_t custgetnode_ind(list_t *head, list_t *node);
 size_t _mylist_print(const list_t *j);
@@ -125,6 +136,9 @@ size_t _tolistlen(const list_t *j);
 /*=======func list3=============*/
 char **customlist_tostring(list_t *head);
 list_t *custnodestart_with(list_t *node, char *start, char c);
+int custfrees(void **ptr);
+void _freeinfostrcttype(info_t *info, int a);
+void init_info(info_t *info, char **s);
 
 /*======func environment====*/
 char *_custgetenv(info_t *info, const char *name);
@@ -139,6 +153,9 @@ int cust_un_setenv(info_t *info);
 /*=======func environment 2===========*/
 int custpopenv_list(info_t *info);
 char **_custgetenviron(info_t *info);
+int isfile_cmd(info_t *info, char *p);
+char *characdup(char *pstr, int st, int end);
+char *custfindpath(info_t *info, char *pstr, char *c);
 
 /*======mem allocation======*/
 char *cust_memset(char *t, char d, unsigned int m);
