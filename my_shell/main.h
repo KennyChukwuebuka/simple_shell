@@ -31,6 +31,13 @@
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
+/*======func getline=======*/
+#define USE_GETLINE 0
+#define USE_STRTOK 0
+/*========event func=========*/
+#define HIST_FILE	".simple_shell_history"
+#define HIST_MAX	4096
+
 extern char **environ;
 
 
@@ -50,6 +57,7 @@ typedef struct passinfo
 	int readfd;
 	int argc;
 	unsigned int line_count;
+	int linecount_flag;
 	char *fname;
 	char **argv;
 	list_t *env;
@@ -62,6 +70,7 @@ typedef struct passinfo
 	char *path;
 	char **cmd_buf;
 	int cmd_buf_type;
+	int histcount;
 } info_t;
 
 
@@ -85,6 +94,8 @@ int _isdelim(char c, char *delim);
 int intsatty(info_t *i);
 int _isalpha(int c);
 int _atoi(char *s);
+/*====megatron========*/
+int megatron(info_t *info);
 
 /*====error file====*/
 int _putcfd(char c, int fd);
@@ -176,4 +187,24 @@ void st_info_clear(info_t *info);
 int _repstr(char **o_str, char *n_str);
 int custrepvars(info_t *info);
 int custrepals(info_t *info);
+
+/*=======event func============*/
+char *cust_histfile(info_t *info);
+int cust_wrthist(info_t *info);
+/*=======event func1===========*/
+int custre_numhst(info_t *info);
+int custbhist(info_t *info, char *buff, int c);
+int custreadhst(info_t *info);
+/*=========func getline==========*/
+ssize_t _custreadbuff(info_t *info, char *buf, size_t *idn);
+int cust_getline(info_t *info, char **ptrs, size_t *len);
+ssize_t _custgetinput(info_t *info);
+/*======signal func===========*/
+void custsignal(__attribute__((unused))int sig);
+ssize_t custinp_buf(info_t *info, char **buff, size_t *c);
+
+/**==========func command======*/
+void custfork(info_t *info);
+void _custfindpathcmd(info_t *info);
+int custshell(info_t *info, char **s);
 #endif /*main.h*/
