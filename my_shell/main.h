@@ -73,6 +73,10 @@ typedef struct passinfo
 	int histcount;
 } info_t;
 
+#define INFO_INIT \
+{0, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, NULL, \
+		0, 0, 0}
+
 
 /*=====megatron======*/
 typedef struct megain
@@ -83,6 +87,8 @@ typedef struct megain
 
 /* User input */
 #define MAX_USER_INPUT_COMMAND 100
+/*======func allspark===========*/
+int main(int ac, char **av);
 
 /*======== Proptotypes============== */
 int _printstr(char *s);
@@ -206,5 +212,5 @@ ssize_t custinp_buf(info_t *info, char **buff, size_t *c);
 /**==========func command======*/
 void custfork(info_t *info);
 void _custfindpathcmd(info_t *info);
-int custshell(info_t *info, char **s);
+int custshell(info_t *, char **);
 #endif /*main.h*/
