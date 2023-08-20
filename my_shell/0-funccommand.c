@@ -53,7 +53,7 @@ void _custfindpathcmd(info_t *info)
 		info->linecount_flag = 0;
 	}
 	for (i = 0, j = 0; info->arg[i]; i++)
-		if (_isdelim(info->arg[i], " \t\n"))
+		if (!_isdelim(info->arg[i], " \t\n"))
 			j++;
 	if (!j)
 		return;
