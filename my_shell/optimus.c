@@ -42,7 +42,7 @@ int _isalpha(int c)
 		return (0);
 }
 /**
- * int_satty - Function that checks shell interactivity
+ * intsatty - Function that checks shell interactivity
  * @i: Params
  * Return: 1 OR 0;
  */

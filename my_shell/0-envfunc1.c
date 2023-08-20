@@ -56,12 +56,12 @@ int _cust_setenv(info_t *info, char *ar, char *val)
 }
 /**
  * cust_un_setenv - Function remove env variables
- * @info Params
+ * @info: Params
  * Return: 0
  */
 int cust_un_setenv(info_t *info)
 {
-	int a; 
+	int a;
 
 	if (info->argc == 1)
 	{
