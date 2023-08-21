@@ -30,22 +30,20 @@ int _printstr(char *s)
 }
 
 /**
- * main - Entry point
+ * _prompt - Entry point
  * @ac: argument count
  * @av: argument vector
  *
  * Return: prompt
  */
 
-int main(int ac, char **av)
+int _prompt()
 {
 	FILE *filestream = stdin;
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t n_chars;
 	char *prmpt = "$ ";
-	(void)ac;
-	(void)av;
 
 	_printstr(prmpt);
 	fflush(stdout);

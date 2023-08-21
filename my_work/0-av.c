@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ * _av - Entry point
  * @ac: number of items
  * @av: NULL terminated arr of str
  *
  * Return: arguments
  */
 
-int main(int ac, char **av)
+int _av(int ac, char **av)
 {	int i;
 	(void)ac;
 	i = 1;

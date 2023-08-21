@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * main - PID
+ * _mypid - PID
  *
  * Return: Always 0.
  */
-int main(void)
+int _mypid(void)
 {
 	pid_t my_pid, my_ppid;
 

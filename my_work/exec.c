@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * main - execve example
+ * _exec - execve example
  *
  * Return: Always 0.
  */
-int main(void)
+int _exec(void)
 {
 	char *argv[] = {"/bin/ls", "-l", "/usr/", NULL};
 	char *envp[] = {NULL};
