@@ -87,8 +87,6 @@ typedef struct megain
 
 /* User input */
 #define MAX_USER_INPUT_COMMAND 100
-/*======func allspark===========*/
-int main(int ac, char **av);
 
 /*======== Proptotypes============== */
 int _printstr(char *s);
