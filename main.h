@@ -34,6 +34,7 @@
 /*======func getline=======*/
 #define USE_GETLINE 0
 #define USE_STRTOK 0
+
 /*========event func=========*/
 #define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
@@ -98,6 +99,7 @@ int _isdelim(char c, char *delim);
 int intsatty(info_t *i);
 int _isalpha(int c);
 int _atoi(char *s);
+
 /*====megatron========*/
 int megatron(info_t *info);
 
@@ -107,6 +109,7 @@ int _putstrfd(char *str, int fd);
 void _erputs(char *str);
 int _erputchar(char c);
 int cust_als(info_t *info);
+
 /*====error file 2=========*/
 void rp_com(char *buf);
 int _ersatoi(char *s);
@@ -139,15 +142,18 @@ char **str_tokna(char *str, char t);
 size_t prt_liststr(const list_t *);
 list_t *addnodeto_end(list_t **head, const char *str, int num);
 int del_node_i(list_t **head, unsigned int ind);
+
 /*=====func list1========*/
 list_t *_myaddnode(list_t **head, const char *str, int num);
 void list_free(list_t **ptr_tohead);
 void checkcont_chain(info_t *info, char *buff, size_t *s, size_t j, size_t len);
 int _ischaindelim(info_t *info, char *buff, size_t *s);
+
 /*======func list2=======*/
 ssize_t custgetnode_ind(list_t *head, list_t *node);
 size_t _mylist_print(const list_t *j);
 size_t _tolistlen(const list_t *j);
+
 /*=======func list3=============*/
 char **customlist_tostring(list_t *head);
 list_t *custnodestart_with(list_t *node, char *start, char c);
@@ -181,10 +187,12 @@ void full_free(char **sap);
 int cust_extshell(info_t *info);
 int cust_helpcd(info_t *info);
 int custunsetals(info_t *info, char *str);
+
 /*=====func init==============*/
 int cust_chdir(info_t *info);
 int custhistory_list(info_t *info);
 int custsetals(info_t *info, char *str);
+
 /*==========func actinit==============*/
 int custprtals(list_t *node);
 void st_info_clear(info_t *info);
@@ -195,14 +203,17 @@ int custrepals(info_t *info);
 /*=======event func============*/
 char *cust_histfile(info_t *info);
 int cust_wrthist(info_t *info);
+
 /*=======event func1===========*/
 int custre_numhst(info_t *info);
 int custbhist(info_t *info, char *buff, int c);
 int custreadhst(info_t *info);
+
 /*=========func getline==========*/
 ssize_t _custreadbuff(info_t *info, char *buf, size_t *idn);
 int cust_getline(info_t *info, char **ptrs, size_t *len);
 ssize_t _custgetinput(info_t *info);
+
 /*======signal func===========*/
 void custsignal(__attribute__((unused))int sig);
 ssize_t custinp_buf(info_t *info, char **buff, size_t *c);
