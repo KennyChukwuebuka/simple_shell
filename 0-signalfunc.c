@@ -30,7 +30,7 @@ ssize_t custinp_buf(info_t *info, char **buff, size_t *c)
 #if USE_GETLINE/*Depending on USE_GETLINE macro, read input using getline*/
 		rd = getline(buff, &len, stdin);
 #else
-		rd = cust_getline(info, buff, &len);
+		rd = cust_getline(info, buff, &len);/*Or read using my custom getline*/
 #endif
 		if (rd > 0)/*if input is successful read*/
 		{
@@ -42,7 +42,7 @@ ssize_t custinp_buf(info_t *info, char **buff, size_t *c)
 			info->linecount_flag = 1;/*set flag indicating line is read*/
 			rp_com(*buff);
 			custbhist(info, *buff, info->histcount++);/*store input in buffer*/
-			{
+			{/*update the char count in input bufa and store the bufa ptr in info*/
 				*c = rd;
 				info->cmd_buf = buff;
 			}
