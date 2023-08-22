@@ -26,7 +26,7 @@ ssize_t custinp_buf(info_t *info, char **buff, size_t *c)
 	{
 		free(*buff);
 		*buff = NULL;
-		signal(SIGINT, custsignal);
+		signal(SIGINT, custsignal); /*undefined SIGINT*/
 #if USE_GETLINE
 		rd = getline(buff, &len, stdin);
 #else
