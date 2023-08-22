@@ -11,7 +11,7 @@ void custsignal(__attribute__((unused))int sig)
 	_putchar(BUF_FLUSH);
 }
 /**
- * custinp_buf - Function buffer
+ * custinp_buf - Function that reads inpput from user
  * @info: Params
  * @buff: Params
  * @c: Params
