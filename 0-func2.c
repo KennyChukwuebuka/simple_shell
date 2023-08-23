@@ -1,19 +1,20 @@
 #include "main.h"
 /**
- * rp_com - Function that rplace comment
+ * rp_com - Function that is used to remove comment from a string
+ * where a commment is defined as any '#' character
  * @buf: Params
  * Return: 0
  */
 void rp_com(char *buf)
 {
 	int i;
-
+/*Iterate through the char of the str until a null termin is reached*/
 	for (i = 0; buf[i] != '\0'; i++)
-	{
+	{/*Chk if cur char is '#' and if it either d fst char or has ' '*/
 		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
-		{
+		{/*Replc the '#' char with a null termi to truncate the string*/
 			buf[i] = '\0';
-			break;
+			break;/*exit loop*/
 		}
 	}
 }
@@ -27,8 +28,8 @@ int _ersatoi(char *s)
 	int i = 0;
 	unsigned long int res = 0;
 
-	if (*s == '+')
-		s++;
+	if (*s == '+')/*check if it isa + sign*/
+		s++;/*move the ptr foward and skip + sign*/
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
