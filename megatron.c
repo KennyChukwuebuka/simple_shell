@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * megatron - Function
+ * megatron - Function command dispatcher
  * @info: Params
  * Return: num
  */
@@ -8,6 +8,7 @@
 int megatron(info_t *info)
 {
 	int i, ret_mega = -1;
+	/*Declare an arr of structure tht contains a comand str and its function.*/
 	mega_table mega[] = {
 		{"env", _custenv},
 		{"setenv", cust_setenv},
@@ -17,15 +18,15 @@ int megatron(info_t *info)
 		{"help", cust_helpcd},
 		{"history", custhistory_list},
 		{"alias", cust_als},
-		{NULL, NULL}
+		{NULL, NULL} /*end of the arr*/
 	};
 
-	for (i = 0; mega[i].type; i++)
-		if (_strcmp(info->argv[0], mega[i].type) == 0)
+	for (i = 0; mega[i].type; i++)/*iterate through arr*/
+		if (_strcmp(info->argv[0], mega[i].type) == 0)/*compare command*/
 		{
-			info->line_count++;
-			ret_mega = mega[i].func(info);
-			break;
+			info->line_count++;/*increment line count into info structure*/
+			ret_mega = mega[i].func(info);/*call matching n store return value*/
+			break;/*exit loop ater findng match*/
 		}
-	return (ret_mega);
+	return (ret_mega);/*return the ret value of asoc function*/
 }
