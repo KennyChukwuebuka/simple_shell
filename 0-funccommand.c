@@ -6,33 +6,33 @@
  */
 void custfork(info_t *info)
 {
-	pid_t child_pid;
-
+	pid_t child_pid;/*variable to store child process*/
+/*fork the current process to create new child process*/
 	child_pid = fork();
-	if (child_pid == -1)
+	if (child_pid == -1)/*check if forking was unsuccessful*/
 	{
-		perror("Error:");
-		return;
+		perror("Error:");/*print errr*/
+		return;/*exit function*/
 	}
 	if (child_pid == 0)
 	{
 		if (execve(info->path, info->argv, _custgetenviron(info)) == -1)
 		{
 			_freeinfostrcttype(info, 1);
-			if (errno == EACCES)
-				exit(126);
-			exit(1);
+			if (errno == EACCES)/*handle execve error*/
+				exit(126);/*permission denied exit code*/
+			exit(1);/*exit with 1 if other error*/
 		}
 	}
 	else
 	{
-		wait(&(info->status));
-		if (WIFEXITED(info->status))
+		wait(&(info->status));/*wait for child process to finish*/
+		if (WIFEXITED(info->status))/*check if child process exited normal*/
 		{
-			info->status = WEXITSTATUS(info->status);
+			info->status = WEXITSTATUS(info->status);/*get exit status*/
 
-			if (info->status == 126)
-				print_er(info, "Perm not granted\n");
+			if (info->status == 126)/*if exit status 126*/
+				print_er(info, "Perm not granted\n");/*print error msg*/
 		}
 	}
 }
