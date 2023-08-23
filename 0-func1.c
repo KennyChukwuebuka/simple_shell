@@ -10,7 +10,7 @@ int _erputchar(char c)
 	static char buff[WRITE_BUF_SIZE];
 
 	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
-	{
+	{ /*Write the buffer contents to the standard error output*/
 		write(2, buff, i);
 		i = 0;
 	}
@@ -66,18 +66,21 @@ int _putcfd(char c, int fd)
 {
 	static int i;
 	static char buff[WRITE_BUF_SIZE];
-
+/*Chk if the char is a special char (BUF_FLUSH) or if the buf is full*/
+/*If so, wrt the content of d buf to d file desc and reset the counta 'i'*/
 	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		write(fd, buff, i);
-		i = 0;
+		write(fd, buff, i);/*wrt buf content to fdesd*/
+		i = 0;/*reset buf position counter*/
 	}
+	/*If the character is not a special character (BUF_FLUSH),*/
+	/*add the char to the buf and incre the buf positn counter 'i'*/
 	if (c != BUF_FLUSH)
 	{
-		buff[i] = c;
-		i++;
+		buff[i] = c;/*add character to buf*/
+		i++;/*increment buf position counter*/
 	}
-	return (1);
+	return (1);/*Success*/
 }
 /**
  * cust_als - Function alias
@@ -90,23 +93,23 @@ int cust_als(info_t *info)
 	char *a = NULL;
 	list_t *node = NULL;
 
-	if (info->argc == 1)
-	{
+	if (info->argc == 1)/*check if one argument is provided*/
+	{ /*iterate through th alias list and find the function*/
 		node = info->alias;
 		while (node)
 		{
-			custprtals(node);
+			custprtals(node);/*print the alias node*/
 			node = node->next;
 		}
-		return (0);
+		return (0);/*Return on success*/
 	}
-	for (i = 1; info->argv[i]; i++)
+	for (i = 1; info->argv[i]; i++)/*loop through command line argument*/
 	{
-		a = str_chr(info->argv[i], '=');
-		if (a)
+		a = str_chr(info->argv[i], '=');/*find '=' in the argument*/
+		if (a)/*if '=' is found set an alias*/
 			custsetals(info, info->argv[i]);
-		else
+		else /*find node in alias list starting with cur arg and contain =*/
 			custprtals(custnodestart_with(info->alias, info->argv[i], '='));
 	}
-	return (0);
+	return (0);/*return sucess*/
 }
