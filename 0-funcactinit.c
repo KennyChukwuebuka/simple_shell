@@ -60,7 +60,8 @@ int custrepals(info_t *info)
 	return (1);
 }
 /**
- * custrepvars - Function that replace vars in tok string
+ * custrepvars - Function that performs variable replacement in
+ * an arry of string replc patterns with corresponding values
  * @info: Params
  * Return: 1 OR 0
  */
@@ -68,30 +69,30 @@ int custrepvars(info_t *info)
 {
 	int i = 0;
 	list_t *node;
-
+/*Loop through each argument in the inf0->argv array*/
 	for (i = 0; info->argv[i]; i++)
-	{
+	{/*Check if the argument doesn't start with '$' or is empty.*/
 		if (info->argv[i][0] != '$' || !info->argv[i][1])
-			continue;
-		if (!_strcmp(info->argv[i], "$?"))
-		{
+			continue;/*skip to next if iteration is true*/
+		if (!_strcmp(info->argv[i], "$?"))/*check is argument is $*/
+		{/*Replace it with the exit status converted to a string*/
 			_repstr(&(info->argv[i]), str_dup(conv_num(info->status, 10, 0)));
-			continue;
+			continue;/*continue to next iteration*/
 		}
-		if (!_strcmp(info->argv[i], "$$"))
-		{
+		if (!_strcmp(info->argv[i], "$$"))/*check is argumt is $$*/
+		{/*Replace it with the process ID converted to a string.*/
 			_repstr(&(info->argv[i]), str_dup(conv_num(getpid(), 10, 0)));
-			continue;
-		}
+			continue;/*contiune to next iteration*/
+		} /*Search for an environment variable in the custnodestart_with list*/
 		node = custnodestart_with(info->env, &info->argv[i][1], '=');
 		if (node)
-		{
+		{/*Replc the argumt wt the value of the found environment var*/
 			_repstr(&(info->argv[i]), str_dup(str_chr(node->str, '=') + 1));
-			continue;
-		}
+			continue;/*continue to next iteration*/
+		} /*If no match is found, replace the argumt wt an empty str*/
 		_repstr(&info->argv[i], str_dup(""));
 	}
-	return (0);
+	return (0);/*Return 0 to indicate successful execution*/
 }
 /**
  * _repstr - Function replace str
