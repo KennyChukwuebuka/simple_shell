@@ -52,7 +52,7 @@ typedef struct liststr
 
 
 /*====Struct_001====*/
-typedef struct passinfo
+typedef struct
 {
 	char *arg;
 	int readfd;
@@ -74,9 +74,30 @@ typedef struct passinfo
 	int histcount;
 } info_t;
 
-#define INFO_INIT \
-{0, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, NULL, \
-		0, 0, 0}
+/*This macro defines an initializer my structure of the type info_t above*/
+/*it initializes each member of the structure with specific values*/
+/*the structure member are in the same order as declared above*/
+#define MY_STRUCT_DEFAULT \
+{ \
+	0, /*char arg*/ \
+	0, /*int readfd*/ \
+	0, /*unsigned int line_count*/ \
+	0, /*int linecount_flag*/ \
+	0, /*char *fname*/ \
+	0, /*char **argv*/ \
+	0, /*list_t *env*/ \
+	NULL, /*int env_changed*/ \
+	0, /*char **environ*/ \
+	NULL, /*int status*/ \
+	0, /*int status*/ \
+	0, /*int er_num*/ \
+	0, /*list_t *history*/ \
+	0, /*list_t *alias*/ \
+	NULL, /*char *path*/ \
+	0, /*char **cmd_buf*/ \
+	0, /*int cmd_buf_type*/ \
+	0  /*int histcount*/ \
+	}
 
 
 /*=====megatron======*/
