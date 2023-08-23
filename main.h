@@ -43,6 +43,12 @@ extern char **environ;
 
 
 /*======list struct=====*/
+/**
+ * struct liststr - list function
+ * @num: Params
+ * @str: Params
+ * @next: Params
+*/
 typedef struct liststr
 {
 	int num;
@@ -52,7 +58,29 @@ typedef struct liststr
 
 
 /*====Struct_001====*/
-typedef struct
+
+/**
+ * struct pass - Function info_t
+ * @arg: Params
+ * @readfd: Params
+ * @argc: Params
+ * @line_count: Params
+ * @linecount_flag: Params
+ * @fname: Params
+ * @argv: Params
+ * @env: Params
+ * @env_changed: Params
+ * @environ: Params
+ * @status: Params
+ * @er_num: Params
+ * @history: Params
+ * @alias: Params
+ * @path: Params
+ * @cmd_buf: Params
+ * @cmd_buf_type: Params
+ * @histcount: Params
+*/
+typedef struct pass
 {
 	char *arg;
 	int readfd;
@@ -101,6 +129,12 @@ typedef struct
 
 
 /*=====megatron======*/
+
+/**
+ * struct megain - Function command dipatcher
+ * @type: Params
+ * @func: Params
+*/
 typedef struct megain
 {
 	char *type;
@@ -167,7 +201,8 @@ int del_node_i(list_t **head, unsigned int ind);
 /*=====func list1========*/
 list_t *_myaddnode(list_t **head, const char *str, int num);
 void list_free(list_t **ptr_tohead);
-void checkcont_chain(info_t *info, char *buff, size_t *s, size_t j, size_t len);
+void checkcont_chain(info_t *info, char *buff, size_t *s,
+size_t j, size_t len);
 int _ischaindelim(info_t *info, char *buff, size_t *s);
 
 /*======func list2=======*/
