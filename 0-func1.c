@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _erputchar - Function that writes char to err
+ * _erputchar - Function that writes char to error
  * @c: Params
  * Return: 1 OR -1
  */
