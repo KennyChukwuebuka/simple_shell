@@ -12,7 +12,7 @@ int cust_extshell(info_t *info)
 	{
 		ex = _ersatoi(info->argv[1]);/*convert arg to integer*/
 		if (ex == -1)/*check if conversion is a success*/
-		{
+		{ /*if conversion fail, set status, print err msg and return 1*/
 			info->status = 2;
 			print_er(info, "number is not legal: ");
 			_erputs(info->argv[1]);
