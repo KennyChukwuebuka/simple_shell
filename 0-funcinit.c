@@ -16,21 +16,21 @@ int cust_chdir(info_t *info)
 	{ /*Get the value of the "HOME" environment variable*/
 		dr = _custgetenv(info, "HOME=");
 		if (!dr)
-			ch_dir = chdir((dr = _custgetenv(info, "PSSWD=")) ?
+			ch_dir = chdir((dr = _custgetenv(info, "PWD=")) ?
 					dr : "/");
 		else
 			ch_dir = chdir(dr);
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)/*If the argument is "-"*/
 	{
-		if (!_custgetenv(info, "OLDPASSWD="))
+		if (!_custgetenv(info, "OLDPWD="))
 		{
 			_puts(sp);/*Print the current working directory*/
 			_putchar('\n');
 			return (1);
 		} /*Print the value of OLDPASSWD*/
-		_puts(_custgetenv(info, "OLDPASSWD=")), _putchar('\n');
-		ch_dir = chdir((dr = _custgetenv(info, "OLDPASSWD=")) ? dr : "/");
+		_puts(_custgetenv(info, "OLDPWD=")), _putchar('\n');
+		ch_dir = chdir((dr = _custgetenv(info, "OLDPWD=")) ? dr : "/");
 	}
 	else
 		ch_dir = chdir(info->argv[1]);
@@ -41,8 +41,8 @@ int cust_chdir(info_t *info)
 	}
 	else
 	{ /*Set the environment variables OLDPASSWD and PSSWD*/
-		_cust_setenv(info, "OLDPASSWD", _custgetenv(info, "PSSWD="));
-		_cust_setenv(info, "PSSWD", getcwd(buffer, 1024));/*update PWD with cwd*/
+		_cust_setenv(info, "OLDPWD", _custgetenv(info, "PWD="));
+		_cust_setenv(info, "PWD", getcwd(buffer, 1024));/*update PWD with cwd*/
 	}
 	return (0);/*Success*/
 }
