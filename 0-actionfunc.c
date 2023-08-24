@@ -14,7 +14,7 @@ int cust_extshell(info_t *info)
 		if (ex == -1)/*check if conversion is a success*/
 		{ /*if conversion fail, set status, print err msg and return 1*/
 			info->status = 2;
-			print_er(info, "number is not legal: ");
+			print_er(info, "Illegal number: ");/*condition of return statement*/
 			_erputs(info->argv[1]);
 			_erputchar('\n');
 			return (1);
