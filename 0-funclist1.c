@@ -6,9 +6,9 @@
  */
 void list_free(list_t **ptr_tohead)
 {
-	list_t *node, *node_tonext, *head;
+	list_t *node, *node_tonext, *head;/*declare variable to list struct*/
 
-	if (!ptr_tohead || !*ptr_tohead)
+	if (!ptr_tohead || !*ptr_tohead)/**/
 		return;
 	head = *ptr_tohead;
 	node = head;
